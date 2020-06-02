@@ -1,0 +1,12 @@
+*.swp
+*.pem
+*.pyc
+*.DS_Store
+.cache
+node_modules
+.env
+__pycache__
+venv
+Logs/*.log
+.idea
+orator.yml
