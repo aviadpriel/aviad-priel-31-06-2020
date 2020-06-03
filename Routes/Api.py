@@ -1,12 +1,9 @@
-from crypt import methods
 
 from flask import Blueprint, request
-import Configs.Authenticate as Auth
 from Configs.LoggingConfing import loggerFile
 
 from Helpers.ResponseHandler import build_response, validate_required_keys
 
-auth = Auth.auth
 
 api_pages = Blueprint('api', __name__)
 
@@ -63,7 +60,7 @@ def get_user_messages_route():
     required_keys = [('user_id', int)]
 
     if not validate_required_keys(required_keys, form_data):
-        return build_response(400, {'status': False, 'error': 'input error  missing required keys'})
+        return build_response(400, {'error': 'input error  missing required keys'})
     user_id = form_data['user_id']
     try:
         data = get_user_messages(int(user_id))

@@ -1,8 +1,10 @@
-import {Route, Switch} from "react-router-dom";
 import React, {Suspense} from "react";
+import {Route, Switch} from "react-router-dom";
+import {Spinner} from "reactstrap";
 import routes from "../../routes";
+
 function Pages() {
-    const fallback = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>;
+    const fallback = () => <Spinner color={"dark"} size={"lg"} />;
 
     return <Suspense fallback={fallback()}>
 

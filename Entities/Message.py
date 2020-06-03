@@ -1,5 +1,4 @@
 from orator import Model
-from orator.orm import belongs_to
 
 import Configs.mysql
 

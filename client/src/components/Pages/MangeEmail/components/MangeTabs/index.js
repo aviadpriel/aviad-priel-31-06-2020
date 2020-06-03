@@ -97,6 +97,7 @@ const MangeTabs = ({sent,received,deleteMassage,...props}) => {
                 <TabPane tabId="sent">
                     <BootstrapTable
                         bootstrap4
+                        classes={"table-responsive-sm"}
                         data={sent}
                         keyField={"id"}
                         columns={sentColumns}
@@ -106,6 +107,8 @@ const MangeTabs = ({sent,received,deleteMassage,...props}) => {
                 </TabPane>
                 <TabPane tabId="received">
                     <BootstrapTable
+                        classes={"table-responsive-sm"}
+
                         bootstrap4
                         data={received}
                         keyField={"id"}

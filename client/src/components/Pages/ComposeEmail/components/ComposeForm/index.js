@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import PropTypes from "prop-types";
-import {Col, Row, Button, Form, FormGroup, Label, Input, Alert} from 'reactstrap';
+import {Col, Row, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import Api from "../../../../../utils/Api";
 import confirm from "reactstrap-confirm"
+
 const ComposeForm = ({...props} ) => {
     const [loading,setLoading] = useState(false);
     const onSubmit = async event =>{
@@ -12,13 +13,7 @@ const ComposeForm = ({...props} ) => {
         const data = new FormData(form);
 
         try {
-            // if (data.get("sender_id") === data.get("receiver_id")){
-            //     await confirm({
-            //         title:null,
-            //         message:<Alert color={"warning"} >sorry you cant send massage to yourself</Alert>
-            //     })
-            //     return ;
-            // }
+
 
             const res  = await Api.post("/create-message",data,
                 {
@@ -49,13 +44,13 @@ const ComposeForm = ({...props} ) => {
             <Row form>
                 <Col md={6}>
                     <FormGroup>
-                        <Label for="form_sender_id">Sender id</Label>
-                        <Input required  type="number" min={1} name="sender_id" id="form_sender_id" placeholder="select sender id" />
+                        <Label for="form_sender_id">From </Label>
+                        <Input required  type="number" min={1} name="sender_id" id="form_sender_id" placeholder="select sender id " />
                     </FormGroup>
                 </Col>
                 <Col md={6}>
                     <FormGroup>
-                        <Label for="form_receiver_id">Receiver id</Label>
+                        <Label for="form_receiver_id">To</Label>
                         <Input type="number" min={1} name="receiver_id" id="form_receiver_id" placeholder="select receiver id" />
                     </FormGroup>
                 </Col>
@@ -68,7 +63,7 @@ const ComposeForm = ({...props} ) => {
                 <Label for="form_content">Content</Label>
                 <Input rows={10} type="textarea" name="content" id="form_content" />
             </FormGroup>
-            <Button color={"primary"} type={"submit"}>Send</Button>
+            <Button color={"primary"} disabled={loading} type={"submit"}>Send</Button>
         </Form>
     );
 }
